@@ -44,7 +44,7 @@ import Inputmask from "inputmask";
 
 			if (this.value.length != 0) {
 
-				placeholder.value = this.value.charAt(0) + this.value.slice(1);
+				placeholder.value = this.value;
 			}
 			else {
 				placeholder.value = "А000АА 000";
@@ -53,7 +53,7 @@ import Inputmask from "inputmask";
 
 
 		handlerOsago.addEventListener("click", function () {
-			this.setAttribute("href", `https://www.insapp.ru/calculator-osago/?ref=sdfasdfasd?preset={"insuranceCar":{"transport":{"registration_number":"${value}"}}}`);
+			this.setAttribute("href", `https://www.insapp.ru/calculator-osago/?ref=sdfasdfasd&preset={"insuranceCar":{"transport":{"registration_number":"${value}"}}}`);
 		});
 	}
 
@@ -229,7 +229,7 @@ import Inputmask from "inputmask";
 		}));
 
 		document.addEventListener("click", function (event) {
-			var isClickInside = brandInput.contains(event.target);
+			let isClickInside = brandInput.contains(event.target);
 
 			if (!isClickInside) {
 				// result.classList.remove("insapp-result-active");
@@ -241,14 +241,14 @@ import Inputmask from "inputmask";
 
 			if (e.target.classList == "insapp-result__item") {
 				brandInput.value = e.target.innerHTML;
-				result.classList.add("insapp-result-active");
-				result.style.display = "block";
+				// result.classList.add("insapp-result-active");
+				// result.style.display = "block";
 				value = brandInput.value;
 				// searchList();
 			}
 		});
 		handlerKasko.addEventListener("click", function () {
-			this.setAttribute("href", `https://www.insapp.ru/calculator-kasko/?ref=sdfasdfasd?preset={"insuranceCar":{"transport":{"brand":"${value}"}}}`);
+			this.setAttribute("href", `https://www.insapp.ru/calculator-kasko/?ref=sdfasdfasd&preset={"insuranceCar":{"transport":{"brand":"${value}"}}}`);
 		});
 	}
 
