@@ -1,0 +1,14 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "-"
+
+block content
+
+			include ../../blocks/components/banner/banner
+			+insapp("Купить e-ОСАГО онлайн","Номер автомобиля","carNumber","js-carNumber",false,"js-insapp-osago",true)
+
+block scripts
+	script(src="js/main.js")
+	script(src="js/vendor.js")

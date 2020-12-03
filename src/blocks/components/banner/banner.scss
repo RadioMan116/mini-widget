@@ -1,0 +1,384 @@
+.insapp {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	width: 553px;
+	min-width: 260px;
+	max-width: 100%;
+	height: 100%;
+	padding: 6px 22px 40px 22px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-variant: tabular-nums;
+	font-feature-settings: "tnum";
+	background-color: $insapp;
+
+	* {
+		box-sizing: border-box;
+	}
+
+	&-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 26px;
+
+		// .insapp-header__title
+		&__title {
+			font-style: normal;
+			font-weight: 600;
+			font-size: 30px;
+			line-height: 28px;
+		}
+
+		// .insapp-header__logo
+		&__logo {}
+	}
+
+	&-content {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+	}
+
+	&-form {
+		flex: 1 1 auto;
+		flex-basis: 200px;
+		position: relative;
+		transform: translateX(0);
+		margin-right: 20px;
+		margin-top: 17px;
+		background-color: #fff;
+		border-radius: $border-radius;
+
+		// .insapp-form__input
+		&__input {
+			display: inline-block;
+			position: relative;
+			z-index: 2;
+			width: 100%;
+			min-width: 0;
+			height: 50px;
+			border: 1px solid #d9d9d9;
+			padding: 4px 11px 4px $ui-x-padding;
+			transition: none;
+			border-radius: $border-radius;
+			font-variant: tabular-nums;
+			list-style: none;
+			font-feature-settings: "tnum";
+			color: rgba(0, 0, 0, 0.85);
+			font-size: 14px;
+			line-height: 1.5715;
+			background-image: none;
+			background-color: transparent;
+
+			&::placeholder {
+				color: #8c8c8c;
+				opacity: 0;
+			}
+
+			&:focus,
+			&:hover,
+			&.insapp-focus {
+				border-right-width: 1px !important;
+				outline: 0;
+				padding-top: $input-y-indent;
+
+				+.insapp-form__label {
+					height: $input-hint-size + $input-y-indent * 2;
+					font-size: $input-hint-size;
+				}
+
+				~.insapp-form__input {
+					opacity: 1;
+				}
+
+				&::placeholder {
+					opacity: 1;
+				}
+			}
+
+			&:hover {
+				border-color: #40a9ff;
+				box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+			}
+
+			&.insapp__form-brand {
+				transition: transform 0.3s, -webkit-transform 0.3s;
+
+				// // background-image: url("../img/svg/arrow.svg");
+				// background-repeat: no-repeat;
+				// background-position: calc(100% - 16px) 50%;
+				// background-size: 14px;
+				&:focus {
+					~.insapp-brand {
+						opacity: 1;
+
+						// pointer-events: all;
+						.insapp-brand__empty {
+							opacity: 1;
+						}
+
+						.insapp-result {
+							pointer-events: all;
+						}
+					}
+
+					~.insapp-form__icons {
+						.insapp-form__search {
+							display: block;
+						}
+
+						.insapp-form__arrow {
+							display: none;
+						}
+					}
+				}
+
+				&:hover {
+					box-shadow: unset;
+				}
+			}
+		}
+
+		// .insapp-form__label
+		&__label {
+			display: inline-flex;
+			align-items: center;
+			position: absolute;
+			z-index: 1;
+			top: $input-hint-size + $input-y-indent;
+			top: 0;
+			left: $ui-x-padding;
+			height: $ui-height;
+			transition: .1s;
+			color: #8c8c8c;
+			cursor: inherit;
+			font-size: 1em;
+			line-height: 1em;
+			pointer-events: none;
+		}
+
+		&__placeholder {
+			position: fixed;
+			z-index: 0;
+			top: 0;
+			left: 0;
+			// transform: translateY(calc(-50%));
+			font-size: 14px;
+			line-height: 1.5715;
+			background: 0;
+			border-color: transparent;
+			color: #8c8c8c;
+			padding-top: 7px;
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		&__icons {
+			position: absolute;
+			top: 50%;
+			left: calc(100% - 28px);
+			transform: translateY(-50%);
+		}
+
+		&__search,
+		&__arrow {
+			width: 14px;
+			height: 14px;
+			transition: .3s;
+		}
+
+		&__search {
+			display: none;
+		}
+	}
+
+	&-button {
+		display: flex;
+		flex: 1 1 100px;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		min-width: 150px;
+		height: 50px;
+		border: 1px solid $color-btn;
+		font-family: "Montserrat", sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 20px;
+		letter-spacing: 0.39px;
+		text-transform: uppercase;
+		cursor: pointer;
+		border-radius: $border-radius;
+		color: #ffffff;
+		border-color: $color-btn;
+		background-color: $color-btn;
+		text-decoration: unset;
+	}
+
+	&-brand {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		z-index: 1050;
+		top: calc(100% + 4px);
+		width: 100%;
+		min-width: 100%;
+		max-height: 256px;
+		-webkit-transition: opacity .3s linear .3s;
+		transition: 0.3s;
+		font-feature-settings: "tnum";
+		box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+		background: #ffffff;
+		border-radius: 2px;
+		overflow-y: auto;
+		overflow-anchor: none;
+		opacity: 0;
+
+		// pointer-events: none;
+		// align-items: center;
+		&:hover::-webkit-scrollbar-thumb {
+			background-color: rgba(0, 0, 0, 0.18);
+		}
+
+		&::-webkit-scrollbar {
+			width: 8px;
+			height: 8px;
+		}
+
+		&::-webkit-scrollbar-track {
+			display: none;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			transition: background-color .8s;
+			border-radius: 10px;
+			background-color: inherit;
+		}
+
+		&__empty {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			align-self: center;
+			margin: 8px 0;
+			padding: 5px 12px;
+			color: rgba(0, 0, 0, 0.85);
+			font-weight: normal;
+			font-size: 14px;
+			line-height: 22px;
+			transition: .3s;
+			opacity: 0;
+		}
+	}
+
+	&-result {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		// align-items: center;
+		position: relative;
+		pointer-events: none;
+
+		// &:after {
+		// 	content: url("../img/svg/box.svg");
+		// 	display: none;
+		// 	align-self: center;
+		// 	margin: 8px 0;
+		// 	padding: 5px 12px;
+		// }
+		&__item {
+			display: block;
+			position: relative;
+			min-height: 32px;
+			padding: 5px 12px;
+			transition: background 0.3s ease;
+			color: rgba(0, 0, 0, 0.85);
+			font-weight: normal;
+			font-size: 14px;
+			line-height: 22px;
+			cursor: pointer;
+
+			&:hover {
+				background-color: #f5f5f5;
+			}
+		}
+
+		&-active {
+			display: flex !important;
+			flex-direction: column;
+			// justify-content: center;
+			padding: 4px 0;
+
+			&:after {
+				display: flex;
+			}
+		}
+
+		&.insapp-result-active {
+			padding: 4px 0;
+			pointer-events: all;
+
+			+.insapp-brand__empty {
+				display: none !important;
+			}
+		}
+
+		&[style="display: block;"] {
+			display: flex !important;
+
+			+.insapp-brand__empty {
+				display: none !important;
+			}
+		}
+
+		&[style="display: none;"] {
+			pointer-events: none;
+		}
+	}
+
+	@media screen and (max-width:600px) {
+		padding: 12px 16px;
+		width: 100%;
+
+		&-header {
+			flex-direction: column;
+			align-items: flex-start;
+			margin-bottom: 14px;
+
+			&__title {
+				margin-bottom: 14px;
+			}
+
+			&__logo {
+				align-self: center;
+			}
+		}
+
+		&-content {
+			flex-direction: column;
+		}
+
+		&-form {
+			flex-basis: unset;
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 14px;
+			margin-top: 0;
+		}
+
+		&-button {
+			flex-basis: unset;
+		}
+	}
+
+	@media screen and (max-width:400px) {
+		&-header {
+			&__title {
+				font-size: 22px;
+			}
+		}
+	}
+}

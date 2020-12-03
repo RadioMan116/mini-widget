@@ -1,0 +1,14 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "-"
+
+block content
+
+			include ../../blocks/components/banner/banner
+			+insapp("Купить КАСКО онлайн","Марка","brand","insapp__form-brand js-insapp__form-brand",true,"js-insapp-kasko")
+
+block scripts
+	script(src="js/main.js")
+	script(src="js/vendor.js")
