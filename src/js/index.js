@@ -26,6 +26,14 @@ import Inputmask from "inputmask";
 			},
 			oncleared: function () {
 				this.classList.remove("insapp-focus");
+			},
+			onBeforePaste: function (pastedValue, opts) {
+				var processedValue = pastedValue;
+
+				//do something with it
+				selector.classList.add("insapp-focus");
+				placeholder.value = pastedValue;
+				return processedValue;
 			}
 		});
 		let im2 = new Inputmask({
@@ -241,7 +249,7 @@ import Inputmask from "inputmask";
 
 			if (e.target.classList == "insapp-result__item") {
 				brandInput.value = e.target.innerHTML;
-				// result.classList.add("insapp-result-active");
+				// result.classList.remove("insapp-result-active");
 				// result.style.display = "block";
 				value = brandInput.value;
 				// searchList();
