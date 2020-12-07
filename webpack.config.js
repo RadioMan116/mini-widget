@@ -14,7 +14,9 @@ module.exports = {
 	],
 
 	entry: {
-		main: "./src/js/index.js",
+		// main: ['core-js/stable', "./src/js/index.js"],
+		kasko: ["./src/js/kasko.js"],
+		osago: ['core-js/stable', "./src/js/osago.js"]
 	},
 
 	output: {

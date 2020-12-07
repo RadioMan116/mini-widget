@@ -74,6 +74,10 @@
 			background-image: none;
 			background-color: transparent;
 
+			&::-ms-clear {
+				display: none;
+			}
+
 			&::placeholder {
 				color: #8c8c8c;
 				opacity: 0;
@@ -113,15 +117,22 @@
 				&:focus {
 					~.insapp-brand {
 						opacity: 1;
+						pointer-events: all;
 
 						// pointer-events: all;
 						.insapp-brand__empty {
 							opacity: 1;
-							// display: flex;
+							display: flex;
 						}
 
 						.insapp-result {
 							pointer-events: all;
+						}
+
+						.insapp-result[style="display: none;"] {
+							+.insapp-brand__empty {
+								display: flex;
+							}
 						}
 					}
 
@@ -148,7 +159,7 @@
 			align-items: center;
 			position: absolute;
 			z-index: 1;
-			top: $input-hint-size + $input-y-indent;
+			// top: $input-hint-size + $input-y-indent;
 			top: 0;
 			left: $ui-x-padding;
 			height: $ui-height;
@@ -161,7 +172,7 @@
 		}
 
 		&__placeholder {
-			position: fixed;
+			position: absolute;
 			z-index: 0;
 			top: 0;
 			left: 0;
@@ -236,6 +247,7 @@
 		overflow-y: auto;
 		overflow-anchor: none;
 		opacity: 0;
+		pointer-events: none;
 
 		// pointer-events: none;
 		// align-items: center;
@@ -259,7 +271,7 @@
 		}
 
 		&__empty {
-			display: flex;
+			// display: flex;
 			display: none;
 			flex-direction: column;
 			align-items: center;
@@ -272,6 +284,7 @@
 			font-size: 14px;
 			line-height: 22px;
 			opacity: 0;
+			pointer-events: none;
 		}
 	}
 
@@ -325,7 +338,7 @@
 
 		&[style="display: none;"] {
 			+.insapp-brand__empty {
-				display: flex;
+				// display: flex;
 			}
 
 			&.insapp-result-active {
@@ -370,7 +383,7 @@
 		}
 
 		&-form {
-			flex-basis: unset;
+			flex-basis: auto;
 			width: 100%;
 			margin-right: 0;
 			margin-bottom: 8px;
@@ -396,7 +409,7 @@
 		}
 
 		&-button {
-			flex-basis: unset;
+			flex-basis: auto;
 			height: 45px;
 		}
 

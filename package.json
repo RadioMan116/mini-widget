@@ -25,11 +25,16 @@
         "lint:scripts --fix": "eslint --fix --color ./src/blocks"
     },
     "devDependencies": {
-        "@babel/core": "^7.4.3",
-        "@babel/preset-env": "^7.4.3",
+		"@babel/core": "^7.6.4",
+		"@babel/plugin-proposal-class-properties": "^7.5.5",
+		"@babel/plugin-proposal-decorators": "^7.6.0",
+		"@babel/plugin-transform-runtime": "^7.6.2",
+		"@babel/preset-env": "^7.6.3",
+		"@babel/preset-typescript": "^7.6.0",
+		"@babel/runtime": "^7.6.3",
+		"babel-loader": "^8.0.6",
         "@babel/register": "^7.4.0",
         "babel-eslint": "~10.1.0",
-        "babel-loader": "^8.0.5",
         "bem-tools-core": "bem-tools/bem-tools-core",
         "bem-tools-create": "bem-tools/bem-tools-create",
         "browser-sync": "^2.23.6",
@@ -71,7 +76,8 @@
     },
     "dependencies": {
         "inputmask": "^5.0.5",
-        "smart-grid": "^2.1.2"
+		"smart-grid": "^2.1.2",
+		"core-js": "^3.3.2"
     },
     "husky": {
         "hooks": {
